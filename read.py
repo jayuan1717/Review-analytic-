@@ -27,3 +27,29 @@ for g in data:
 		good.append(g)
 print('一共有', len(good), '比留言有包含單詞Good')
 print(good[162549])
+
+wc = {}
+for d in data:
+	words = d.split(' ')
+	for word in words:
+		if word in wc:
+			wc[word] += 1
+		else:
+			wc[word] = 1 #新增key到字典
+
+for word in wc:
+	if wc[word] > 100:
+		print(word,  wc[word])
+
+print(len(wc))
+
+while True:
+	word = input('請輸入要查詢的文字: ')
+	if word == 'q':
+		break
+	if word in wc:
+		print(word, "出現過", wc[word], '次')
+	else:
+		print('這個字沒有出現過喔')
+
+print('感謝使用本查詢功能')
